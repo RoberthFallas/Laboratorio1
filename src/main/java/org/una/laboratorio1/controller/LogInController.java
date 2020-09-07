@@ -11,29 +11,36 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import org.una.laboratorio1.utils.FlowController;
 
 /**
  * FXML Controller class
  *
  * @author roberth
  */
-public class LogInController implements Initializable {
+public class LogInController extends Controller implements Initializable {
 
     @FXML
-    private JFXTextField txtCedula;
+    public JFXTextField txtCedula;
     @FXML
-    private JFXTextField txtContrasenna;
+    public JFXTextField txtContrasenna;
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
+
+    @Override
+    public void initialize() {
+
+    }
 
     @FXML
-    private void Ingresar(ActionEvent event) {
+    public void Ingresar(ActionEvent event) {
+        FlowController.getInstance().goMain();
+        FlowController.getInstance().goView("HomeScreen");
+        FlowController.getInstance().goView("MenuLateral","Left", null);
+        this.getStage().close();
     }
-    
+
 }

@@ -14,15 +14,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import org.una.laboratorio1.App;
 import org.una.laboratorio1.controller.Controller;
 import java.util.Stack;
-import javafx.scene.control.Alert;
-import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 
 /**
  *
@@ -105,23 +103,22 @@ public class FlowController {
     @SuppressWarnings("static-access")
     public void goMain() {
         try {
-            this.mainStage.setScene(new Scene(FXMLLoader.load(App.class.getResource("view/Principal.fxml"), this.idioma)));
+            this.mainStage.setScene(new Scene(FXMLLoader.load(App.class.getResource("view/Main.fxml"), this.idioma)));
             this.mainStage.show();
-            this.mainStage.getIcons().add(new Image("clinicauna/resources/logo01.png"));
-            this.mainStage.setTitle("ClínicaUNA");
-            this.mainStage.setMaximized(true);
+            //this.mainStage.getIcons().add(new Image("clinicauna/resources/logo01.png"));
+            this.mainStage.setTitle("Lab01");
+            //this.mainStage.setMaximized(true);
         } catch (IOException ex) {
             java.util.logging.Logger.getLogger(FlowController.class.getName()).log(Level.SEVERE, "Error inicializando la vista base.", ex);
         }
     }
 
     public Boolean isMainMaximized() {
-        return this.mainStage.isMaximized();
+        return FlowController.mainStage.isMaximized();
     }
 
     public void maximizeMain() {
-        this.mainStage.setMaximized(true);
-        new Mensaje().showModal(Alert.AlertType.INFORMATION, "Maximize", this.mainStage, "Para la mejor visualizacion de los elementos se recomienda maximizar");
+        FlowController.mainStage.setMaximized(true);
     }
 
     public void goView(String viewName) {
@@ -152,8 +149,8 @@ public class FlowController {
         }
         switch (location) {
             case "Center":
-                ((VBox) ((BorderPane) stage.getScene().getRoot()).getCenter()).getChildren().clear();
-                ((VBox) ((BorderPane) stage.getScene().getRoot()).getCenter()).getChildren().add(loader.getRoot());
+                ((AnchorPane) ((BorderPane) stage.getScene().getRoot()).getCenter()).getChildren().clear();
+                ((AnchorPane) ((BorderPane) stage.getScene().getRoot()).getCenter()).getChildren().add(loader.getRoot());
                 break;
             case "Top":
                 break;
@@ -162,10 +159,16 @@ public class FlowController {
             case "Right":
                 break;
             case "Left":
+                ((AnchorPane) ((BorderPane) stage.getScene().getRoot()).getLeft()).getChildren().clear();
+                ((AnchorPane) ((BorderPane) stage.getScene().getRoot()).getLeft()).getChildren().add(loader.getRoot());
                 break;
             default:
                 break;
         }
+        AnchorPane.setBottomAnchor(loader.getRoot(), 0d);
+        AnchorPane.setTopAnchor(loader.getRoot(), 0d);
+        AnchorPane.setRightAnchor(loader.getRoot(), 0d);
+        AnchorPane.setLeftAnchor(loader.getRoot(), 0d);
     }
 
     public void goViewInStage(String viewName, Stage stage) {
@@ -180,8 +183,8 @@ public class FlowController {
         Controller controller = loader.getController();
         controller.initialize();
         Stage stage = new Stage();
-        stage.getIcons().add(new Image("clinicauna/resources/logo01.png"));
-        stage.setTitle("ClínicaUNA");
+        //stage.getIcons().add(new Image("clinicauna/resources/logo01.png"));
+        stage.setTitle("Lab01");
         stage.setOnHidden((WindowEvent event) -> {
             controller.getStage().getScene().setRoot(new Pane());
             controller.setStage(null);
@@ -195,19 +198,15 @@ public class FlowController {
 
     }
 
-    public void goViewInWindow(String viewName, Boolean resizable, Boolean primerUso) {
+    public void goViewInWindow(String viewName, Boolean resizable) {
         FXMLLoader loader = getLoader(viewName);
         Controller controller = loader.getController();
         controller.initialize();
         Stage stage = new Stage();
         //stage.setMaximized(true);
-        stage.getIcons().add(new Image("clinicauna/resources/logo01.png"));
-        stage.setTitle("ClínicaUNA");
+        //stage.getIcons().add(new Image("clinicauna/resources/logo01.png"));
+        stage.setTitle("Lab01");
         stage.setResizable(resizable);
-        if (primerUso) {
-            stage.setHeight(560.00);
-            stage.setWidth(950.00);
-        }
         stage.setOnHidden((WindowEvent event) -> {
             controller.getStage().getScene().setRoot(new Pane());
             controller.setStage(null);
@@ -218,7 +217,6 @@ public class FlowController {
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.show();
-
     }
 
     public void goViewInWindowModal(String viewName, Stage parentStage, Boolean resizable) {
@@ -226,8 +224,8 @@ public class FlowController {
         Controller controller = loader.getController();
         controller.initialize();
         Stage stage = new Stage();
-        stage.getIcons().add(new Image("clinicauna/resources/logo01.png"));
-        stage.setTitle("ClínicaUNA");
+        //stage.getIcons().add(new Image("clinicauna/resources/logo01.png"));
+        stage.setTitle("Lab01");
         stage.setResizable(resizable);
         stage.setOnHidden((WindowEvent event) -> {
             controller.getStage().getScene().setRoot(new Pane());

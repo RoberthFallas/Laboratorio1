@@ -9,4 +9,5 @@ module org.una.laboratorio1 {
     
     opens org.una.laboratorio1 to javafx.fxml;
     exports org.una.laboratorio1;
+    exports org.una.laboratorio1.controller;
 }
