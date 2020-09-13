@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.VBox;
+import org.una.laboratorio1.utils.FlowController;
 
 /**
  * FXML Controller class
@@ -42,6 +43,9 @@ public class MenuLateralController extends Controller implements Initializable {
 
     @FXML
     public void onActionDepartamento(ActionEvent event) {
+        FlowController.getInstance().goMain();
+        FlowController.getInstance().goView("DepartamentoV");
+         FlowController.getInstance().goView("MenuLateral", "Left", null);
     }
 
     @FXML
