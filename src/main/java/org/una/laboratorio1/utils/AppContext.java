@@ -35,11 +35,10 @@ public class AppContext {
     private void cargarPropiedades() {
         try {
             FileInputStream configFile;
-            configFile = new FileInputStream("config/properties.ini");
+            configFile = new FileInputStream("src/main/resources/org/una/laboratorio1/config/properties.ini");
             Properties appProperties = new Properties();
             appProperties.load(configFile);
             configFile.close();
-//TODO
             if (appProperties.getProperty("propiedades.resturl") != null) {
                 this.set("resturl", appProperties.getProperty("propiedades.resturl"));
             }

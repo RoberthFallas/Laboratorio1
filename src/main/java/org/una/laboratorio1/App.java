@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import org.una.laboratorio1.utils.AppContext;
 import org.una.laboratorio1.utils.FlowController;
 
 /**
@@ -16,6 +17,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        AppContext.getInstance();
         FlowController.getInstance().InitializeFlow(stage, null);
         FlowController.getInstance().goViewInWindow("LogIn");
     }

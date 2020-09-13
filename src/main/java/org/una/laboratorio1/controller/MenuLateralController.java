@@ -7,7 +7,9 @@ package org.una.laboratorio1.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.VBox;
 
 /**
  * FXML Controller class
@@ -15,6 +17,9 @@ import javafx.fxml.Initializable;
  * @author roberth
  */
 public class MenuLateralController extends Controller implements Initializable {
+
+    @FXML
+    public VBox vbContenedorAreas;
 
     /**
      * Initializes the controller class.

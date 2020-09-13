@@ -5,13 +5,18 @@
  */
 package org.una.laboratorio1.controller;
 
+import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import org.una.laboratorio1.services.UsuarioService;
 import org.una.laboratorio1.utils.FlowController;
+import org.una.laboratorio1.utils.Mensaje;
+import org.una.laboratorio1.utils.Respuesta;
 
 /**
  * FXML Controller class
@@ -23,7 +28,7 @@ public class LogInController extends Controller implements Initializable {
     @FXML
     public JFXTextField txtCedula;
     @FXML
-    public JFXTextField txtContrasenna;
+    public JFXPasswordField txtContrasenna;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -37,10 +42,16 @@ public class LogInController extends Controller implements Initializable {
 
     @FXML
     public void Ingresar(ActionEvent event) {
-        FlowController.getInstance().goMain();
-        FlowController.getInstance().goView("HomeScreen");
-        FlowController.getInstance().goView("MenuLateral","Left", null);
-        this.getStage().close();
+        Respuesta resp = new UsuarioService().logIn(txtCedula.getText(), txtContrasenna.getText());
+        if (resp.getEstado()) {
+            FlowController.getInstance().goMain();
+            FlowController.getInstance().goView("HomeScreen");
+            FlowController.getInstance().goView("MenuLateral", "Left", null);
+            this.getStage().close();
+        } else {
+            new Mensaje().showModal(Alert.AlertType.WARNING, "Algo ha ocurrido", this.getStage(), "Parece que has introducido mal tus credenciales de acceso.");
+        }
+
     }
 
 }

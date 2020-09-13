@@ -30,7 +30,6 @@ public class Request {
     private Invocation.Builder builder;
     private WebTarget webTarget;
     private Response response;
-
     public Request() {
         this.client = ClientBuilder.newClient();
     }
