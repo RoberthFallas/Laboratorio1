@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="170.0" style="-fx-background-color: #ccc;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.una.laboratorio1.controller.MenuLateralController">
    <children>
@@ -17,9 +18,23 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
                <children>
-                  <JFXButton prefHeight="60.0" prefWidth="145.0" style="-fx-background-color: #ddd;" text="Usuario (Cerrar Sesion)" />
+                  <JFXButton onAction="#onActionCerrarSesion" prefHeight="60.0" prefWidth="145.0" style="-fx-background-color: #ddd;" text="Usuario (Cerrar Sesion)" />
                   <Separator prefWidth="200.0" />
-                  <Label text="Acceso a sistema" />
+                  <Label text="Información">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
+                  <JFXButton onAction="#onActionDepartamento" style="-fx-background-color: #ddd;" text="Departamentos" />
+                  <JFXButton onAction="#onActionTiposTramites" style="-fx-background-color: #ddd;" text="Tipos de trámites" />
+                  <JFXButton onAction="#onActionDisennoTramites" style="-fx-background-color: #ddd;" text="Diseño de trámites" />
+                  <Label text="Administración">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <JFXButton onAction="#onActionPermisos" style="-fx-background-color: #ddd;" text="Permisos" />
+                  <JFXButton onAction="#onActionUsuarios" style="-fx-background-color: #ddd;" text="Usuarios" />
+                  <JFXButton onAction="#onActionParámetros" style="-fx-background-color: #ddd;" text="Parámetros" />
                </children>
             </VBox>
          </content>
