@@ -42,9 +42,9 @@ public class UsuarioDTO {
 //    public void asociarDepartamento(DepartamentoDTO depart) {
 //        this.departamento = depart;
 //    }
-    public UsuarioDTO(String passwordEncriptado, String cedula) {
-        this.passwordEncriptado = passwordEncriptado;
-        this.cedula = new SimpleStringProperty(cedula);
+    public UsuarioDTO() {
+
+        this.cedula = new SimpleStringProperty("");
         esJefe = new SimpleBooleanProperty();
         fechaModificacion = new SimpleObjectProperty();
         fechaModificacion.set(LocalDate.now());
