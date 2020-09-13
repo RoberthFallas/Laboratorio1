@@ -7,6 +7,7 @@ package org.una.laboratorio1.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.VBox;
@@ -33,6 +34,34 @@ public class MenuLateralController extends Controller implements Initializable {
 
     @Override
     public void initialize() {
+    }
+
+    @FXML
+    public void onActionCerrarSesion(ActionEvent event) {
+    }
+
+    @FXML
+    public void onActionDepartamento(ActionEvent event) {
+    }
+
+    @FXML
+    public void onActionTiposTramites(ActionEvent event) {
+    }
+
+    @FXML
+    public void onActionDisennoTramites(ActionEvent event) {
+    }
+
+    @FXML
+    public void onActionPermisos(ActionEvent event) {
+    }
+
+    @FXML
+    public void onActionUsuarios(ActionEvent event) {
+    }
+
+    @FXML
+    public void onActionParámetros(ActionEvent event) {
     }
     
 }
