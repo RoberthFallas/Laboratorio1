@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="170.0" style="-fx-background-color: #ccc;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.una.laboratorio1.controller.MenuLateralController">
+   <children>
+      <ScrollPane layoutX="-25.0" layoutY="100.0" prefHeight="400.0" prefWidth="170.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <content>
+            <VBox fx:id="vbContenedorAreas" alignment="TOP_CENTER" minHeight="145.0" prefHeight="395.0" prefWidth="165.0" spacing="15.0">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <children>
+                  <JFXButton onAction="#onActionCerrarSesion" prefHeight="60.0" prefWidth="145.0" style="-fx-background-color: #ddd;" text="Usuario (Cerrar Sesion)" />
+                  <Separator prefWidth="200.0" />
+                  <Label text="Información">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
+                  <JFXButton onAction="#onActionDepartamento" style="-fx-background-color: #ddd;" text="Departamentos" />
+                  <JFXButton onAction="#onActionTiposTramites" style="-fx-background-color: #ddd;" text="Tipos de trámites" />
+                  <JFXButton onAction="#onActionDisennoTramites" style="-fx-background-color: #ddd;" text="Diseño de trámites" />
+                  <Label text="Administración">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <JFXButton onAction="#onActionPermisos" style="-fx-background-color: #ddd;" text="Permisos" />
+                  <JFXButton onAction="#onActionUsuarios" style="-fx-background-color: #ddd;" text="Usuarios" />
+                  <JFXButton onAction="#onActionParámetros" style="-fx-background-color: #ddd;" text="Parámetros" />
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
