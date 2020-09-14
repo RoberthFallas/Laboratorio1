@@ -6,7 +6,6 @@
 package org.una.laboratorio1.services;
 
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import javax.ws.rs.core.GenericType;
@@ -19,17 +18,18 @@ import org.una.laboratorio1.utils.Respuesta;
  * @author LordLalo
  */
 public class DepartamentoService {
-   public Respuesta buscarDepartamentoid(String idDepartamento) {
-  Map<String,Object>parametros=new HashMap();
-  parametros.put("idDepartamento",(idDepartamento!=null)? idDepartamento : " ");
-  Request request = new Request("/departamentos","/{idDepartamento}",parametros);
-  request.get();
-  if(request.isError()){
-      return new Respuesta(false,request.getError(),"");}
-  List<DepartamentoDTO> resultList = (List<DepartamentoDTO>) request.readEntity(new GenericType<List<DepartamentoDTO>>() {
+
+    public Respuesta buscarDepartamentoid(String idDepartamento) {
+        Map<String, Object> parametros = new HashMap();
+        parametros.put("idDepartamento", (idDepartamento != null) ? idDepartamento : " ");
+        Request request = new Request("/departamentos", "/{idDepartamento}", parametros);
+        request.get();
+        if (request.isError()) {
+            return new Respuesta(false, request.getError(), "");
+        }
+        List<DepartamentoDTO> resultList = (List<DepartamentoDTO>) request.readEntity(new GenericType<List<DepartamentoDTO>>() {
         });
-    return new Respuesta(true,"","","data",resultList);
-   }
+        return new Respuesta(true, "", "", "data", resultList);
+    }
 
-   }
-
+}
