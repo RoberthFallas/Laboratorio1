@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import org.una.laboratorio1.utils.FlowController;
 
 /**
  * FXML Controller class
@@ -38,8 +39,6 @@ public class DisennoTramitesController extends Controller implements Initializab
     @FXML
     public TableColumn<?, ?> columnTTAciones;
     @FXML
-    public JFXButton OnClickAgregarTipoTramite;
-    @FXML
     public Tab tabVariaciones;
     @FXML
     public TableColumn<?, ?> columnVarId;
@@ -51,16 +50,21 @@ public class DisennoTramitesController extends Controller implements Initializab
     public TableColumn<?, ?> columnVarAccionnes;
     @FXML
     public Tab tabRequisitos;
+    @FXML
+    public TableView<?> tblVariaciones;
+    @FXML
+    public TableColumn<?, ?> columnVariacion;
 
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-    }    
+
+    }
 
     @Override
     public void initialize() {
@@ -84,5 +88,10 @@ public class DisennoTramitesController extends Controller implements Initializab
     @FXML
     public void onClickAgregarVariacion(ActionEvent event) {
     }
-    
+
+    @FXML
+    public void OnClickAgregarTipoTramite(ActionEvent event) {
+        FlowController.getInstance().goViewInWindowModal("EdicionTipoTramite", this.getStage(), true);
+    }
+
 }

@@ -51,7 +51,7 @@
                                     </VBox>
                                  </content>
                               </ScrollPane>
-                              <JFXButton fx:id="OnClickAgregarTipoTramite" layoutX="384.0" layoutY="2.0" style="-fx-background-color: #ddd;" text="Agregar" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="2.0" />
+                              <JFXButton layoutX="384.0" layoutY="2.0" onAction="#OnClickAgregarTipoTramite" style="-fx-background-color: #ddd;" text="Agregar" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="2.0" />
                            </children></AnchorPane>
                             </content>
                         </Tab>
