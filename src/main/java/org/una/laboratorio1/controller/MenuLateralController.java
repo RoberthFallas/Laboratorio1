@@ -44,6 +44,7 @@ public class MenuLateralController extends Controller implements Initializable {
 
     @FXML
     public void onActionDepartamento(ActionEvent event) {
+        FlowController.getInstance().goView("DepartamentoV");
     }
 
     @FXML

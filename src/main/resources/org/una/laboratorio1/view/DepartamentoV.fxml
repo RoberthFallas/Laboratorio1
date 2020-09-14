@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: CYAN;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.una.laboratorio1.controller.DepartamentoVController">
+   <children>
+      <Label fx:id="labelDepartamento" layoutX="61.0" layoutY="62.0" text="Información de Departamentos" />
+      <TextField fx:id="txtBusqueda" layoutX="61.0" layoutY="90.0" prefHeight="25.0" prefWidth="321.0" />
+      <JFXButton fx:id="btnBuscar" layoutX="416.0" layoutY="90.0" onAction="#OnActionBuscar" text="Buscar" />
+      <TableView fx:id="tblDepartamentos" layoutX="55.0" layoutY="133.0" prefHeight="200.0" prefWidth="491.0">
+        <columns>
+            <TableColumn fx:id="columnId" prefWidth="54.0" text="Id" />
+          <TableColumn fx:id="columnNombre" prefWidth="130.0" text="Nombre" />
+          <TableColumn fx:id="columnEstado" prefWidth="165.0" text="Estado" />
+            <TableColumn fx:id="columnOperaciones" prefWidth="141.0" text="Operaciones" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
