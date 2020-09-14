@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane id="AnchorPane" minHeight="290.0" minWidth="255.0" prefHeight="290.0" prefWidth="255.0" style="-fx-background-color: white;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="org.una.laboratorio1.controller.LogInController">
+<AnchorPane id="AnchorPane" minHeight="290.0" minWidth="255.0" prefHeight="290.0" prefWidth="255.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.una.laboratorio1.controller.LogInController">
    <children>
       <Label layoutX="13.0" layoutY="21.0" text="Bienvenido al sistema," AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="20.0" />
       <Label layoutX="13.0" layoutY="38.0" text="por favor ingrese sus credenciales" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="38.0" />
@@ -20,7 +19,7 @@
             <JFXPasswordField fx:id="txtContrasenna" labelFloat="true" promptText="Contraseña" />
             <HBox alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="193.0">
                <children>
-                  <JFXButton onAction="#Ingresar" text="Ingresar" />
+                  <JFXButton onAction="#Ingresar" style="-fx-background-color: #ddd;" text="Ingresar" />
                </children>
             </HBox>
          </children>
