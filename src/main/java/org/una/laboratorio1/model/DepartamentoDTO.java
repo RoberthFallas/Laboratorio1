@@ -26,13 +26,12 @@ public class DepartamentoDTO {
     private Long id;
     @XmlTransient
     public SimpleStringProperty nombre;
-    private boolean estado;
+    private String estado;
     @XmlTransient
     public SimpleObjectProperty<LocalDate> fechaRegistro;
     @XmlTransient
     public SimpleObjectProperty<LocalDate> fechaModificacion;
 
-    //@Setter(AccessLevel.NONE)
     //private List<UsuarioDTO> usuarios;
     public DepartamentoDTO() {
 
@@ -41,7 +40,6 @@ public class DepartamentoDTO {
         fechaRegistro = new SimpleObjectProperty();
         fechaRegistro.set(LocalDate.now());
         nombre = new SimpleStringProperty();
-        id = 0L;
     }
 
     public Long getId() {
@@ -52,7 +50,7 @@ public class DepartamentoDTO {
         this.id = id;
     }
 
-    public String getNombrE() {
+    public String getNombre() {
         return nombre.get();
     }
 
@@ -61,11 +59,11 @@ public class DepartamentoDTO {
     }
 
     public boolean isEstado() {
-        return estado;
+        return "Activo".equals(this.estado);
     }
 
     public void setEstado(boolean estado) {
-        this.estado = estado;
+        this.estado = (estado) ? "Activo" : "Inactivo";
     }
 
     public Date getFechaRegistro() {
