@@ -5,12 +5,14 @@
  */
 package org.una.laboratorio1.controller;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
@@ -24,17 +26,31 @@ public class DisennoTramitesController extends Controller implements Initializab
     @FXML
     public JFXTextField txtParamBusqueda;
     @FXML
-    public TableView<?> tblVariaciones;
+    public Tab tabTTramites;
     @FXML
-    public TableColumn<?, ?> columnId;
+    public TableView<?> tblTipoTramite;
     @FXML
-    public TableColumn<?, ?> columnVariacion;
+    public TableColumn<?, ?> columnTTEstado;
     @FXML
-    public TableColumn<?, ?> columnEstado;
+    public TableColumn<?, ?> columnTTModificacion;
     @FXML
-    public TableColumn<?, ?> columnGrupo;
+    public TableColumn<?, ?> columnTTDescripcion;
     @FXML
-    public TableColumn<?, ?> columnAccionnes;
+    public TableColumn<?, ?> columnTTAciones;
+    @FXML
+    public JFXButton OnClickAgregarTipoTramite;
+    @FXML
+    public Tab tabVariaciones;
+    @FXML
+    public TableColumn<?, ?> columnVarId;
+    @FXML
+    public TableColumn<?, ?> columnVarEstado;
+    @FXML
+    public TableColumn<?, ?> columnVarGrupo;
+    @FXML
+    public TableColumn<?, ?> columnVarAccionnes;
+    @FXML
+    public Tab tabRequisitos;
 
     /**
      * Initializes the controller class.
@@ -62,8 +78,11 @@ public class DisennoTramitesController extends Controller implements Initializab
     public void onClickBuscar(ActionEvent event) {
     }
 
-    @FXML
     public void onClickAgregar(ActionEvent event) {
+    }
+
+    @FXML
+    public void onClickAgregarVariacion(ActionEvent event) {
     }
     
 }
