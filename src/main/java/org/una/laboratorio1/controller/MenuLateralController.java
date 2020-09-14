@@ -25,13 +25,14 @@ public class MenuLateralController extends Controller implements Initializable {
 
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @Override
     public void initialize() {
@@ -43,9 +44,7 @@ public class MenuLateralController extends Controller implements Initializable {
 
     @FXML
     public void onActionDepartamento(ActionEvent event) {
-        FlowController.getInstance().goMain();
         FlowController.getInstance().goView("DepartamentoV");
-         FlowController.getInstance().goView("MenuLateral", "Left", null);
     }
 
     @FXML
@@ -67,5 +66,5 @@ public class MenuLateralController extends Controller implements Initializable {
     @FXML
     public void onActionParámetros(ActionEvent event) {
     }
-    
+
 }
