@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.core.GenericType;
 import org.una.laboratorio1.model.DepartamentoDTO;
 import org.una.laboratorio1.utils.Request;
 import org.una.laboratorio1.utils.Respuesta;
@@ -36,6 +37,24 @@ public class DepartamentoService {
             return new Respuesta(true, "", "", "data", new ArrayList(Arrays.asList(departamento)));
             //##########Por el momento así porque solo se recibe un resultado, la idea es recibilo por listas, aunque
             //solo traigan un elemento############
+        } catch (Exception ex) {
+            return new Respuesta(false, "Ha ocurrido un error al establecer comunicación con el servidor.", ex.getMessage());
+        }
+    }
+
+    public Respuesta getAll() {
+        try {
+            Request request = new Request("/departamentos/buscarTodo");
+            request.get();
+            if (request.isError()) {
+                if (request.getStatus() == 204) {
+                    return new Respuesta(false, "No hay departamentos disponibles :(", request.getError());
+                }
+                return new Respuesta(false, "Parece que algo ha salido mal. Si el problema persiste solicita ayuda del encargado del sistema.", request.getError());
+            }
+            List<DepartamentoDTO> resultList = (List<DepartamentoDTO>) request.readEntity(new GenericType<List<DepartamentoDTO>>() {
+            });
+            return new Respuesta(true, "", "", "data", resultList);
         } catch (Exception ex) {
             return new Respuesta(false, "Ha ocurrido un error al establecer comunicación con el servidor.", ex.getMessage());
         }

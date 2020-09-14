@@ -31,30 +31,6 @@
                 </HBox>
                 <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
                     <tabs>
-                        <Tab fx:id="tabTTramites" text="Tipos de trámites">
-                            <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <ScrollPane layoutX="125.0" layoutY="-14.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
-                                 <content>
-                                    <VBox prefHeight="139.0" prefWidth="1024.0">
-                                       <children>
-                                          <TableView fx:id="tblTipoTramite" maxWidth="-Infinity" prefHeight="200.0" prefWidth="1024.0" VBox.vgrow="ALWAYS">
-                                            <columns>
-                                              <TableColumn fx:id="columnTTEstado" prefWidth="59.0" text="Estado" />
-                                              <TableColumn fx:id="columnTTModificacion" prefWidth="95.0" text="Modificación" />
-                                                <TableColumn fx:id="columnTTDescripcion" prefWidth="154.0" text="Descripción" />
-                                                <TableColumn fx:id="columnTTAciones" prefWidth="128.0" text="Acciones" />
-                                            </columns>
-                                          </TableView>
-                                       </children>
-                                    </VBox>
-                                 </content>
-                              </ScrollPane>
-                              <JFXButton layoutX="384.0" layoutY="2.0" onAction="#OnClickAgregarTipoTramite" style="-fx-background-color: #ddd;" text="Agregar" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="2.0" />
-                           </children></AnchorPane>
-                            </content>
-                        </Tab>
                         <Tab fx:id="tabVariaciones" text="Variaciones">
                             <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="600.0">
@@ -76,7 +52,7 @@
                                                 </VBox>
                                             </content>
                                         </ScrollPane>
-                                        <JFXButton layoutX="534.0" layoutY="2.0" onAction="#onClickAgregarVariacion" style="-fx-background-color: #ddd;" text="Agregar" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="2.0" />
+                                        <JFXButton layoutX="381.0" layoutY="2.0" onAction="#onClickAgregarVariacion" style="-fx-background-color: #ddd;" text="Agregar" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="2.0" />
                                     </children>
                                 </AnchorPane>
                             </content>

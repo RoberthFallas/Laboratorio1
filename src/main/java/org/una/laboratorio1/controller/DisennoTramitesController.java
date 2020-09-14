@@ -5,7 +5,6 @@
  */
 package org.una.laboratorio1.controller;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,7 +14,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import org.una.laboratorio1.utils.FlowController;
 
 /**
  * FXML Controller class
@@ -26,18 +24,6 @@ public class DisennoTramitesController extends Controller implements Initializab
 
     @FXML
     public JFXTextField txtParamBusqueda;
-    @FXML
-    public Tab tabTTramites;
-    @FXML
-    public TableView<?> tblTipoTramite;
-    @FXML
-    public TableColumn<?, ?> columnTTEstado;
-    @FXML
-    public TableColumn<?, ?> columnTTModificacion;
-    @FXML
-    public TableColumn<?, ?> columnTTDescripcion;
-    @FXML
-    public TableColumn<?, ?> columnTTAciones;
     @FXML
     public Tab tabVariaciones;
     @FXML
@@ -88,10 +74,5 @@ public class DisennoTramitesController extends Controller implements Initializab
     @FXML
     public void onClickAgregarVariacion(ActionEvent event) {
     }
-
-    @FXML
-    public void OnClickAgregarTipoTramite(ActionEvent event) {
-        FlowController.getInstance().goViewInWindowModal("EdicionTipoTramite", this.getStage(), true);
-    }
-
+    
 }

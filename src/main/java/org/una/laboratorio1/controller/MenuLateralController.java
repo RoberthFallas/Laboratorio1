@@ -49,6 +49,7 @@ public class MenuLateralController extends Controller implements Initializable {
 
     @FXML
     public void onActionTiposTramites(ActionEvent event) {
+        FlowController.getInstance().goView("TiposTramites");
     }
 
     @FXML

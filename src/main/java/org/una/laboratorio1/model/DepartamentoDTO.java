@@ -83,4 +83,10 @@ public class DepartamentoDTO {
     public void setFechaModificacion(Date fechaModificacion) {
         this.fechaModificacion.set(fechaModificacion.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
     }
+
+    @Override
+    public String toString() {
+        return this.getNombre();
+    }
+    
 }
