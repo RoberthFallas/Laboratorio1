@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.una.laboratorio1.controller.DepartamentoOpcionesController">
+   <children>
+      <Label layoutX="66.0" layoutY="42.0" text="Información de Departamentos" />
+      <VBox prefHeight="200.0" prefWidth="353.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+         <children>
+            <HBox>
+               <children>
+                  <AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="341.0" prefWidth="600.0" HBox.hgrow="SOMETIMES">
+                     <children>
+                        <Label layoutX="62.0" layoutY="47.0" text="Id:" />
+                        <Label layoutX="56.0" layoutY="99.0" text="Nombre:" />
+                        <Label layoutX="60.0" layoutY="137.0" text="Estado:" />
+                        <Label layoutX="62.0" layoutY="193.0" text="Creado el" />
+                        <Label layoutX="59.0" layoutY="241.0" text="Última Modificación" />
+                        <JFXTextField fx:id="txtId" layoutX="233.0" layoutY="43.0" />
+                        <JFXTextField fx:id="txtNombre" layoutX="233.0" layoutY="82.0" />
+                        <JFXComboBox fx:id="comboBoxEstado" layoutX="233.0" layoutY="133.0" prefHeight="25.0" prefWidth="135.0" />
+                        <Label fx:id="labelFechaRegistro" layoutX="401.0" layoutY="193.0" text="FechaRegistro" />
+                        <Label fx:id="labelFechaModificacion" layoutX="401.0" layoutY="241.0" text="FechaModificacion" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="600.0">
+               <children>
+                  <JFXButton fx:id="btnCancelar" onAction="#onActionCancelar" text="Cancelar">
+                     <HBox.margin>
+                        <Insets right="300.0" />
+                     </HBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="btnGuardar" onAction="#onActionGuardar" text="Guardar" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

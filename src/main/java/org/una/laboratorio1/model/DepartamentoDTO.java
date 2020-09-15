@@ -5,6 +5,7 @@
  */
 package org.una.laboratorio1.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
@@ -21,18 +22,17 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @XmlRootElement(name = "DepartamentoDTO")
 @XmlAccessorType(XmlAccessType.PUBLIC_MEMBER)
-public class DepartamentoDTO {
+public class DepartamentoDTO implements Serializable {
 
     private Long id;
     @XmlTransient
     public SimpleStringProperty nombre;
-    private String estado;
+    private boolean estado;
     @XmlTransient
     public SimpleObjectProperty<LocalDate> fechaRegistro;
     @XmlTransient
     public SimpleObjectProperty<LocalDate> fechaModificacion;
 
-    //private List<UsuarioDTO> usuarios;
     public DepartamentoDTO() {
 
         fechaModificacion = new SimpleObjectProperty();
@@ -59,16 +59,21 @@ public class DepartamentoDTO {
     }
 
     public boolean isEstado() {
-        return "Activo".equals(this.estado);
+        //return "Activo".equals(this.estado);
+        return estado;
     }
 
     public void setEstado(boolean estado) {
-        this.estado = (estado) ? "Activo" : "Inactivo";
+        // this.estado = (estado) ? "Activo" : "Inactivo";
+        this.estado = estado;
     }
 
     public Date getFechaRegistro() {
+       
+     
         Date date = Date.from(fechaRegistro.get().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
-        return date;
+           return date;
+       
     }
 
     public void setFechaRegistro(Date fechaRegistro) {
@@ -76,8 +81,10 @@ public class DepartamentoDTO {
     }
 
     public Date getFechaModificacion() {
-        Date date = Date.from(fechaModificacion.get().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+     Date date = Date.from(fechaModificacion.get().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
         return date;
+
+  
     }
 
     public void setFechaModificacion(Date fechaModificacion) {
@@ -89,4 +96,12 @@ public class DepartamentoDTO {
         return this.getNombre();
     }
     
+
+    public String estadoActivoInactivo() {
+        if (estado) {
+            return "Activo";
+        } else {
+            return "Inactivo";
+        }
+    }
 }
