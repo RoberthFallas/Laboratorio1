@@ -17,13 +17,18 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.PieChart.Data;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.util.Callback;
 import org.una.laboratorio1.model.DepartamentoDTO;
 import org.una.laboratorio1.services.DepartamentoService;
+import org.una.laboratorio1.utils.FlowController;
 import org.una.laboratorio1.utils.Mensaje;
 import org.una.laboratorio1.utils.Respuesta;
 
@@ -32,7 +37,7 @@ import org.una.laboratorio1.utils.Respuesta;
  *
  * @author LordLalo
  */
-public class DepartamentoVController extends Controller implements Initializable  {
+public class DepartamentoVController extends Controller implements Initializable {
 
     @FXML
     public Label labelDepartamento;
@@ -49,11 +54,14 @@ public class DepartamentoVController extends Controller implements Initializable
     @FXML
     public TableColumn<DepartamentoDTO, String> columnEstado;
     @FXML
-    public TableColumn<?, ?> columnOperaciones;           //Aún por implementar
+    public TableColumn<?,?> columnOperaciones;           //Aún por implementar
     public ObservableList<DepartamentoDTO> departamentosEnTabla;
+    @FXML
+    public Button btnAgregar;
 
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
@@ -61,22 +69,60 @@ public class DepartamentoVController extends Controller implements Initializable
     public void initialize(URL url, ResourceBundle rb) {
         columnId.setCellValueFactory(x -> new SimpleStringProperty(x.getValue().getId().toString()));
         columnNombre.setCellValueFactory(x -> new SimpleStringProperty(x.getValue().getNombre()));
-        columnEstado.setCellValueFactory(x -> new SimpleStringProperty(x.getValue().getNombre()));
-    }    
+        columnEstado.setCellValueFactory(x -> new SimpleStringProperty(x.getValue().estadoActivoInactivo()));
+        Button btnB=new Button();
+        btnB.setText("");
+        
+    }
 
     @Override
     public void initialize() {
-       
+
     }
 
     @FXML
     public void OnActionBuscar(ActionEvent event) {
-        Respuesta resp = new DepartamentoService().buscarDepartamentoid(txtBusqueda.getText());
-        if(resp.getEstado()){
-            departamentosEnTabla = FXCollections.observableArrayList((List)resp.getResultado("data"));
-            tblDepartamentos.setItems(departamentosEnTabla);
-        }else{
-            new Mensaje().showModal(Alert.AlertType.WARNING, "Algo ha ocurrido", this.getStage(), resp.getMensaje());
+
+        if ("activo".equals(txtBusqueda.getText().toLowerCase()) || "inactivo".equals(txtBusqueda.getText().toLowerCase())) {
+            Respuesta resp;
+            if ("activo".equals(txtBusqueda.getText().toLowerCase())) {
+                resp = new DepartamentoService().buscarDepartamentoEstado(true);
+            } else {
+                resp = new DepartamentoService().buscarDepartamentoEstado(false);
+            }
+
+            if (resp.getEstado()) {
+                departamentosEnTabla = FXCollections.observableArrayList((List) resp.getResultado("data"));
+                tblDepartamentos.setItems(departamentosEnTabla);
+            } else {
+                new Mensaje().showModal(Alert.AlertType.WARNING, "Algo ha ocurrido", this.getStage(), resp.getMensaje());
+            }
+
+        } else {
+            if (Character.isDigit(txtBusqueda.getText().charAt(0))) {
+                Respuesta resp = new DepartamentoService().buscarDepartamentoid(txtBusqueda.getText());
+                if (resp.getEstado()) {
+                    departamentosEnTabla = FXCollections.observableArrayList((List) resp.getResultado("data"));
+                    tblDepartamentos.setItems(departamentosEnTabla);
+                } else {
+                    new Mensaje().showModal(Alert.AlertType.WARNING, "Algo ha ocurrido", this.getStage(), resp.getMensaje());
+                }
+            } else {
+                Respuesta resp = new DepartamentoService().buscarDepartamentoNombre(txtBusqueda.getText());
+                if (resp.getEstado()) {
+                    departamentosEnTabla = FXCollections.observableArrayList((List) resp.getResultado("data"));
+                    tblDepartamentos.setItems(departamentosEnTabla);
+                } else {
+                    new Mensaje().showModal(Alert.AlertType.WARNING, "Algo ha ocurrido", this.getStage(), resp.getMensaje());
+                }
+            }
         }
+    }
+
+    @FXML
+    public void OnActionAgregar(ActionEvent event) {
+        FlowController.getInstance().goMain();
+        FlowController.getInstance().goView("DepartamentoOpciones");
+
     }
 }

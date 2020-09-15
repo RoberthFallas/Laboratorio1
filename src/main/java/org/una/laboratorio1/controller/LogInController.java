@@ -46,7 +46,7 @@ public class LogInController extends Controller implements Initializable {
     public void Ingresar(ActionEvent event) {
         Respuesta resp = new UsuarioService().logIn(txtCedula.getText(), txtContrasenna.getText());
         if (resp.getEstado()) {
-            AppContext.getInstance().set("Token", ((AuthenticationResponse)resp.getResultado("data")).getJwt());
+            AppContext.getInstance().set("Token", ((AuthenticationResponse) resp.getResultado("data")).getJwt());
             AppContext.getInstance().get("Token");
             FlowController.getInstance().goMain();
             FlowController.getInstance().goView("HomeScreen");

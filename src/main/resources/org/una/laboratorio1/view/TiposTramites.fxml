@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="450.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="org.una.laboratorio1.controller.TiposTramitesController">
+   <children>
+      <Label layoutX="14.0" layoutY="14.0" text="Tipos de trámites" />
+      <JFXButton layoutX="24.0" layoutY="371.0" onAction="#onClickCancelar" style="-fx-background-color: #ddd;" text="Cancelar" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" />
+      <JFXButton layoutX="316.0" layoutY="336.0" onAction="#onClickGuardar" style="-fx-background-color: #ddd;" text="Guardar" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+      <VBox layoutX="175.0" layoutY="100.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="30.0" spacing="10.0">
+               <children>
+                  <JFXTextField fx:id="txtParamBusqueda" labelFloat="true" prefHeight="25.0" prefWidth="500.0" promptText="Prámetro de búsqueda" HBox.hgrow="ALWAYS" />
+                  <JFXButton maxWidth="100.0" minWidth="51.0" onAction="#onClickBuscar" style="-fx-background-color: #ddd;" text="Buscar" HBox.hgrow="ALWAYS" />
+               </children>
+               <padding>
+                  <Insets left="10.0" right="10.0" />
+               </padding>
+            </HBox>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="250.0" prefWidth="450.0">
+               <children>
+                  <ScrollPane layoutX="125.0" layoutY="-14.0" prefHeight="200.0" prefWidth="450.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+                     <content>
+                        <VBox prefHeight="205.0" prefWidth="1024.0">
+                           <children>
+                              <TableView fx:id="tblTipoTramite" maxWidth="-Infinity" prefHeight="450.0" prefWidth="1024.0" VBox.vgrow="ALWAYS">
+                                 <columns>
+                                    <TableColumn fx:id="columnTTEstado" prefWidth="59.0" text="Estado" />
+                                    <TableColumn fx:id="columnTTModificacion" prefWidth="95.0" text="Modificación" />
+                                    <TableColumn fx:id="columnTTDescripcion" prefWidth="154.0" text="Descripción" />
+                                    <TableColumn fx:id="columnTTAciones" prefWidth="128.0" text="Acciones" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+                  <JFXButton layoutX="382.0" layoutY="2.0" onAction="#OnClickAgregarTipoTramite" style="-fx-background-color: #ddd;" text="Agregar" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="2.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
