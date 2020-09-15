@@ -37,6 +37,8 @@ public class TramiteTipoDTO {
 
     public TramiteTipoDTO() {
         descripcion = new SimpleStringProperty();
+        fechaModificacion = LocalDate.now();
+        fechaRegistro =  LocalDate.now();
     }
 
     public Long getId() {
@@ -56,8 +58,11 @@ public class TramiteTipoDTO {
     }
 
     public String getFechaRegistro() {
-        Date date = Date.from(fechaModificacion.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
-        return DateConverter.convertToSpringBoot(date);
+        Date date = Date.from(fechaRegistro.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+        if (date != null) {
+            return DateConverter.convertToSpringBoot(date);
+        }
+        return null;
     }
 
     public void setFechaRegistro(LocalDate fechaRegistro) {
@@ -65,8 +70,11 @@ public class TramiteTipoDTO {
     }
 
     public String getFechaModificacion() {
-        Date date = Date.from(fechaRegistro.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
-        return DateConverter.convertToSpringBoot(date);
+        Date date = Date.from(fechaModificacion.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+        if (date != null) {
+            return DateConverter.convertToSpringBoot(date);
+        }
+        return null;
     }
 
     public void setFechaModificacion(Date fechaModificacion) {
@@ -88,5 +96,5 @@ public class TramiteTipoDTO {
     public void setDepartamento(DepartamentoDTO departamento) {
         this.departamento = departamento;
     }
-    
+
 }

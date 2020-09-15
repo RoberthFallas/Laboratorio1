@@ -58,7 +58,9 @@ public class EdicionTipoTramiteController extends Controller implements Initiali
 
     @FXML
     public void OnActionGuardar(ActionEvent event) {
-        if(isDatoValido()){
+        if (isDatoValido()) {
+            tipoTramite.estado = cbEstado.getValue();
+            tipoTramite.setDepartamento(cbDepartamento.getValue());
             saveAndClose();
         }
     }
@@ -90,7 +92,7 @@ public class EdicionTipoTramiteController extends Controller implements Initiali
     }
 
     public void bind(boolean nuevo) {
-        if(nuevo){
+        if (nuevo) {
             tipoTramite = new TramiteTipoDTO();
         }
         txtDescripcion.textProperty().bindBidirectional(tipoTramite.descripcion);
