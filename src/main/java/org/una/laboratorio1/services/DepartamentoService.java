@@ -97,4 +97,22 @@ public class DepartamentoService {
             return new Respuesta(false, "Error", ex.getMessage());
         }
     }
+
+    public Respuesta getAll() {
+        try {
+            Request request = new Request("/departamentos/buscarTodo");
+            request.get();
+            if (request.isError()) {
+                if (request.getStatus() == 204) {
+                    return new Respuesta(false, "No hay departamentos disponibles :(", request.getError());
+                }
+                return new Respuesta(false, "Parece que algo ha salido mal. Si el problema persiste solicita ayuda del encargado del sistema.", request.getError());
+            }
+            List<DepartamentoDTO> resultList = (List<DepartamentoDTO>) request.readEntity(new GenericType<List<DepartamentoDTO>>() {
+            });
+            return new Respuesta(true, "", "", "data", resultList);
+        } catch (Exception ex) {
+            return new Respuesta(false, "Ha ocurrido un error al establecer comunicación con el servidor.", ex.getMessage());
+        }
+    }
 }
