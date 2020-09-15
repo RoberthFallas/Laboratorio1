@@ -59,8 +59,8 @@ public class DepartamentoOpcionesController extends Controller implements Initia
     public void onActionGuardar(ActionEvent event) {
           DepartamentoDTO departamento=new DepartamentoDTO();
           departamento.setEstado(false);
-        //  departamento.setFechaModificacion(new Date());
-         //admin departamento.setFechaRegistro(new Date());
+          departamento.setFechaModificacion(new Date());
+          departamento.setFechaRegistro(new Date());
           departamento.setNombre(txtNombre.getText());
           Respuesta resp= new DepartamentoService().guardarDepartamento(departamento);
           if (!resp.getEstado()) {
