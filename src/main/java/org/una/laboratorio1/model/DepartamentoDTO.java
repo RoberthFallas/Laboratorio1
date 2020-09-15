@@ -15,6 +15,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.una.laboratorio1.utils.DateConverter;
 
 /**
  *
@@ -68,10 +69,14 @@ public class DepartamentoDTO implements Serializable {
         this.estado = estado;
     }
 
-    public Date getFechaRegistro() {
+    public String getFechaRegistro() {
 
         Date date = Date.from(fechaRegistro.get().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
-        return date;
+        if (date != null) {
+            return DateConverter.convertToSpringBoot(date);
+        } else {
+            return null;
+        }
 
     }
 
@@ -79,9 +84,13 @@ public class DepartamentoDTO implements Serializable {
         this.fechaRegistro.set(fechaRegistro.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
     }
 
-    public Date getFechaModificacion() {
+    public String getFechaModificacion() {
         Date date = Date.from(fechaModificacion.get().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
-        return date;
+        if (date != null) {
+            return DateConverter.convertToSpringBoot(date);
+        } else {
+            return null;
+        }
 
     }
 

@@ -121,8 +121,9 @@ public class DepartamentoVController extends Controller implements Initializable
 
     @FXML
     public void OnActionAgregar(ActionEvent event) {
-        FlowController.getInstance().goMain();
-        FlowController.getInstance().goView("DepartamentoOpciones");
+//        FlowController.getInstance().goMain();
+//        FlowController.getInstance().goView("DepartamentoOpciones");
+ FlowController.getInstance().goViewInWindowModal("DepartamentoOpciones", this.getStage(), true);
 
     }
 }
