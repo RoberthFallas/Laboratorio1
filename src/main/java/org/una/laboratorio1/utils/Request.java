@@ -63,7 +63,7 @@ public class Request {
         MultivaluedMap<String, Object> headers = new MultivaluedHashMap<>();
         headers.add("Content-Type", "application/json; charset=UTF-8");
         if (AppContext.getInstance().get("Token") != null) {
-            headers.add("Authorization","Bearer " + AppContext.getInstance().get("Token").toString());
+            headers.add("Authorization", "Bearer " + AppContext.getInstance().get("Token").toString());
         }
         builder.headers(headers);
     }
@@ -116,7 +116,7 @@ public class Request {
     }
 
     public Boolean isError() {
-        return getStatus() != Response.Status.OK.getStatusCode();
+        return getStatus() < 200 || getStatus() > 299;
     }
 
     public String getError() {

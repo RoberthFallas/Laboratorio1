@@ -5,7 +5,7 @@
  */
 package org.una.laboratorio1.model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 import javafx.beans.property.SimpleStringProperty;
@@ -27,9 +27,9 @@ public class TramiteTipoDTO {
     @XmlTransient
     public SimpleStringProperty descripcion;
     @XmlTransient
-    public LocalDate fechaRegistro;
+    public LocalDateTime fechaRegistro;
     @XmlTransient
-    public LocalDate fechaModificacion;
+    public LocalDateTime fechaModificacion;
     @XmlTransient
     public String estado;
     private DepartamentoDTO departamento;
@@ -37,8 +37,8 @@ public class TramiteTipoDTO {
 
     public TramiteTipoDTO() {
         descripcion = new SimpleStringProperty();
-        fechaModificacion = LocalDate.now();
-        fechaRegistro =  LocalDate.now();
+        fechaModificacion = LocalDateTime.now();
+        fechaRegistro = LocalDateTime.now();
     }
 
     public Long getId() {
@@ -57,28 +57,32 @@ public class TramiteTipoDTO {
         this.descripcion.set(descripcion);
     }
 
+    // @JsonbDateFormat(value = "yyyy-MM-dd'T'HH:mm:ss.SSSX")
     public String getFechaRegistro() {
-        Date date = Date.from(fechaRegistro.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+        Date date = java.sql.Timestamp.valueOf(fechaRegistro);
         if (date != null) {
             return DateConverter.convertToSpringBoot(date);
+        } else {
+            return null;
         }
-        return null;
     }
 
-    public void setFechaRegistro(LocalDate fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
+    public void setFechaRegistro(Date fechaRegistro) {
+        this.fechaRegistro = fechaRegistro.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
     }
 
+    // @JsonbDateFormat(value = "yyyy-MM-dd'T'HH:mm:ss.SSSX")
     public String getFechaModificacion() {
-        Date date = Date.from(fechaModificacion.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+        Date date = java.sql.Timestamp.valueOf(fechaModificacion);
         if (date != null) {
             return DateConverter.convertToSpringBoot(date);
+        } else {
+            return null;
         }
-        return null;
     }
 
     public void setFechaModificacion(Date fechaModificacion) {
-        this.fechaModificacion = fechaModificacion.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        this.fechaModificacion = fechaModificacion.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
     }
 
     public boolean isEstado() {
