@@ -69,11 +69,10 @@ public class DepartamentoDTO implements Serializable {
     }
 
     public Date getFechaRegistro() {
-       
-     
+
         Date date = Date.from(fechaRegistro.get().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
-           return date;
-       
+        return date;
+
     }
 
     public void setFechaRegistro(Date fechaRegistro) {
@@ -81,10 +80,9 @@ public class DepartamentoDTO implements Serializable {
     }
 
     public Date getFechaModificacion() {
-     Date date = Date.from(fechaModificacion.get().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+        Date date = Date.from(fechaModificacion.get().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
         return date;
 
-  
     }
 
     public void setFechaModificacion(Date fechaModificacion) {
@@ -95,7 +93,6 @@ public class DepartamentoDTO implements Serializable {
     public String toString() {
         return this.getNombre();
     }
-    
 
     public String estadoActivoInactivo() {
         if (estado) {
