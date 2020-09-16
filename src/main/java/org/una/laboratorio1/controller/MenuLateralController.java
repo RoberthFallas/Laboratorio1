@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.VBox;
+import org.una.laboratorio1.utils.FlowController;
 
 /**
  * FXML Controller class
@@ -24,13 +25,14 @@ public class MenuLateralController extends Controller implements Initializable {
 
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @Override
     public void initialize() {
@@ -42,14 +44,17 @@ public class MenuLateralController extends Controller implements Initializable {
 
     @FXML
     public void onActionDepartamento(ActionEvent event) {
+        FlowController.getInstance().goView("DepartamentoV");
     }
 
     @FXML
     public void onActionTiposTramites(ActionEvent event) {
+        FlowController.getInstance().goView("TiposTramites");
     }
 
     @FXML
     public void onActionDisennoTramites(ActionEvent event) {
+        FlowController.getInstance().goView("DisennoTramites");
     }
 
     @FXML
@@ -63,5 +68,5 @@ public class MenuLateralController extends Controller implements Initializable {
     @FXML
     public void onActionParámetros(ActionEvent event) {
     }
-    
+
 }

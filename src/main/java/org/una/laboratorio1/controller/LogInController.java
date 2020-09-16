@@ -13,7 +13,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import org.una.laboratorio1.model.AuthenticationResponse;
 import org.una.laboratorio1.services.UsuarioService;
+import org.una.laboratorio1.utils.AppContext;
 import org.una.laboratorio1.utils.FlowController;
 import org.una.laboratorio1.utils.Mensaje;
 import org.una.laboratorio1.utils.Respuesta;
@@ -44,12 +46,14 @@ public class LogInController extends Controller implements Initializable {
     public void Ingresar(ActionEvent event) {
         Respuesta resp = new UsuarioService().logIn(txtCedula.getText(), txtContrasenna.getText());
         if (resp.getEstado()) {
+            AppContext.getInstance().set("Token", ((AuthenticationResponse) resp.getResultado("data")).getJwt());
+            AppContext.getInstance().get("Token");
             FlowController.getInstance().goMain();
             FlowController.getInstance().goView("HomeScreen");
             FlowController.getInstance().goView("MenuLateral", "Left", null);
             this.getStage().close();
         } else {
-            new Mensaje().showModal(Alert.AlertType.WARNING, "Algo ha ocurrido", this.getStage(), "Parece que has introducido mal tus credenciales de acceso.");
+            new Mensaje().showModal(Alert.AlertType.WARNING, "Algo ha ocurrido", this.getStage(), resp.getMensaje());
         }
 
     }
