@@ -101,4 +101,9 @@ public class TramiteTipoDTO {
         this.departamento = departamento;
     }
 
+    @Override
+    public String toString() {
+        return this.getDescripcion();
+    }
+
 }

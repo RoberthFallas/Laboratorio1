@@ -20,10 +20,7 @@ import javax.ws.rs.core.MultivaluedHashMap;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
 
-/**
- *
- * @author ccarranza
- */
+
 public class Request {
 
     private Client client;
