@@ -97,6 +97,21 @@ public class DepartamentoService {
             return new Respuesta(false, "Error", ex.getMessage());
         }
     }
+    public Respuesta moficiarDepartamento(DepartamentoDTO departamento) {
+        Map<String, Object> parametros = new HashMap();
+        try {
+            parametros.put("id", 1);
+            Request request = new Request("/departamentos","/{id}",parametros);
+            request.put(departamento);
+        if (request.isError()) {
+                return new Respuesta(false, request.getError(), "");
+            }
+            return new Respuesta(true, "msj_accionExitosa", "", "data", request.readEntity(DepartamentoDTO.class));
+           // return new Respuesta(true, "", "", "data", request.readEntity(DepartamentoDTO.class));
+        } catch (Exception ex) {
+            return new Respuesta(false, "Error", ex.getMessage());
+        }
+    }
 
     public Respuesta getAll() {
         try {
