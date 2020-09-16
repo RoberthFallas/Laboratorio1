@@ -5,10 +5,7 @@
  */
 package org.una.laboratorio1.services;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import org.una.laboratorio1.model.AuthenticationRequest;
-import org.una.laboratorio1.model.AuthenticationResponse;
+import org.una.laboratorio1.model.VariacionDTO;
 import org.una.laboratorio1.utils.Request;
 import org.una.laboratorio1.utils.Respuesta;
 
@@ -17,9 +14,9 @@ import org.una.laboratorio1.utils.Respuesta;
  * @author roberth
  */
 public class VariacionService {
-    
-    public Respuesta getByTramiteDecription(String descripcion){
-     
+
+    public Respuesta getByTramiteDecription(String descripcion) {
+
         try {
             //Request request = new Request(""); No existe ni el controller en el service
             //request.post(autRiq);
@@ -36,5 +33,19 @@ public class VariacionService {
         }
         return null;
     }
-    
+
+    public Respuesta save(VariacionDTO variacion) {
+        try {
+            Request request = new Request("/variacion/create");
+            request.post(variacion);
+            if (request.isError()) {
+                return new Respuesta(false, "Parece que algo ha salido mal. Si el problema persiste solicita ayuda del encargado del sistema.", request.getError());
+            }
+            return new Respuesta(true, "", "", "data", request.readEntity(VariacionDTO.class));
+        } catch (Exception ex) {
+            return new Respuesta(false, "Ha ocurrido un error al establecer comunicación con el servidor.", ex.getMessage());
+        }
+
+    }
+
 }

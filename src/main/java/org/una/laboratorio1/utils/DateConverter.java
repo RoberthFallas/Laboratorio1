@@ -7,7 +7,6 @@ package org.una.laboratorio1.utils;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 
 /**
  *
@@ -16,8 +15,8 @@ import java.util.Locale;
 public class DateConverter {
 
     public static String convertToSpringBoot(Date fecha) {
-        SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
-        sdf.applyPattern("yyyy-MM-dd'T'HH:mm:ss.SSSX");
+        SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy");
+        sdf.applyPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
         String newDateString = sdf.format(fecha);
         return newDateString;
     }

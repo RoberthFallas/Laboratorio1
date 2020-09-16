@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import org.una.laboratorio1.utils.FlowController;
 
 /**
  * FXML Controller class
@@ -68,11 +69,9 @@ public class DisennoTramitesController extends Controller implements Initializab
     public void onClickBuscar(ActionEvent event) {
     }
 
-    public void onClickAgregar(ActionEvent event) {
-    }
-
     @FXML
     public void onClickAgregarVariacion(ActionEvent event) {
+        FlowController.getInstance().goViewInWindowModal("EdicionVariaciones", this.getStage(), true);
     }
     
 }
