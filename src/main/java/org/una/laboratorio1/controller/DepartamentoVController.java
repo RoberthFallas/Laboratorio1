@@ -9,25 +9,23 @@ import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.chart.PieChart.Data;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.util.Callback;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
 import org.una.laboratorio1.model.DepartamentoDTO;
 import org.una.laboratorio1.services.DepartamentoService;
+import org.una.laboratorio1.utils.AppContext;
 import org.una.laboratorio1.utils.FlowController;
 import org.una.laboratorio1.utils.Mensaje;
 import org.una.laboratorio1.utils.Respuesta;
@@ -54,7 +52,7 @@ public class DepartamentoVController extends Controller implements Initializable
     @FXML
     public TableColumn<DepartamentoDTO, String> columnEstado;
     @FXML
-    public TableColumn<?,?> columnOperaciones;           //Aún por implementar
+    public TableColumn<DepartamentoDTO, String> columnOperaciones;           //Aún por implementar
     public ObservableList<DepartamentoDTO> departamentosEnTabla;
     @FXML
     public Button btnAgregar;
@@ -70,9 +68,6 @@ public class DepartamentoVController extends Controller implements Initializable
         columnId.setCellValueFactory(x -> new SimpleStringProperty(x.getValue().getId().toString()));
         columnNombre.setCellValueFactory(x -> new SimpleStringProperty(x.getValue().getNombre()));
         columnEstado.setCellValueFactory(x -> new SimpleStringProperty(x.getValue().estadoActivoInactivo()));
-        Button btnB=new Button();
-        btnB.setText("");
-        
     }
 
     @Override
@@ -102,6 +97,7 @@ public class DepartamentoVController extends Controller implements Initializable
             if (Character.isDigit(txtBusqueda.getText().charAt(0))) {
                 Respuesta resp = new DepartamentoService().buscarDepartamentoid(txtBusqueda.getText());
                 if (resp.getEstado()) {
+                    AppContext.getInstance().set("Departamento",(DepartamentoDTO)(resp.getResultado("data")));
                     departamentosEnTabla = FXCollections.observableArrayList((List) resp.getResultado("data"));
                     tblDepartamentos.setItems(departamentosEnTabla);
                 } else {
@@ -121,9 +117,8 @@ public class DepartamentoVController extends Controller implements Initializable
 
     @FXML
     public void OnActionAgregar(ActionEvent event) {
-//        FlowController.getInstance().goMain();
-//        FlowController.getInstance().goView("DepartamentoOpciones");
- FlowController.getInstance().goViewInWindowModal("DepartamentoOpciones", this.getStage(), true);
+
+        FlowController.getInstance().goViewInWindowModal("DepartamentoOpciones", this.getStage(), true);
 
     }
 }
